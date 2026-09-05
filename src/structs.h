@@ -12,3 +12,7 @@ typedef struct {
     Mouse mouse;
 } App;
 
+typedef struct {
+    int i;
+    int j;
+} Pos;
