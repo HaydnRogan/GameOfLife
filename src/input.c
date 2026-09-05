@@ -2,7 +2,7 @@
 #include "grid.h"
 
 extern App app;
-extern Grid *currentGrid, *prevGrid;
+extern Grid *currentGrid, *nextGrid;
 
 void doInput(void)
 {
@@ -12,7 +12,7 @@ void doInput(void)
         SDL_GetMouseState(&app.mouse.x, &app.mouse.y);
         switch (event.type) {
             case SDL_QUIT:
-                app.running = 0;
+                exit(0);
                 break;
 
             case SDL_MOUSEBUTTONDOWN:
@@ -27,15 +27,11 @@ void doInput(void)
                     switch (event.key.keysym.scancode) {
 
                         case SDL_SCANCODE_SPACE:
-                            swapGrid(&currentGrid, &prevGrid);
+                                doStep(&currentGrid, &nextGrid);
                             break;
 
                         case SDL_SCANCODE_BACKSLASH:
-                            printf("N = %d\n", getNeighbours(currentGrid, app.mouse.x / CELL_SIZE,
-                                          app.mouse.y / CELL_SIZE));
-                           
-                            
-                                
+                            app.running = !(app.running);
                             break;
 
                         default:

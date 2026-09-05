@@ -38,7 +38,7 @@ void drawGrid(Grid *grid)
         for (int j = 0; j < NROWS; j++) {
             if ((*grid)[i][j] == 1) {
 
-                drawCell(i*CELL_SIZE, j*CELL_SIZE);
+                drawCell(i * CELL_SIZE, j * CELL_SIZE);
             }
         }
     }

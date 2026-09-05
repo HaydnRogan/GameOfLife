@@ -10,7 +10,7 @@ void init_SDL(void)
                                   SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH,
                                   SCREEN_HEIGHT, 0);
     app.surface = SDL_GetWindowSurface(app.window);
-    app.running = 1;
+    app.running = 0;
 }
 
 void cleanup(void)

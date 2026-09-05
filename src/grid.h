@@ -4,4 +4,4 @@
 void initGrid(Grid grid);
 void swapGrid(Grid **currentGrid, Grid **nextGrid);
 int getNeighbours(Grid *grid, int i, int j);
-// void doStep(Grid *currentGrid, Grid *prevGrid);
+void doStep(Grid **currentGrid, Grid **nextGrid);

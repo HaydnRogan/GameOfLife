@@ -6,14 +6,14 @@
 
 App app;
 Grid gridA, gridB;
-Grid *prevGrid, *currentGrid;
+Grid *nextGrid, *currentGrid;
 
 
 
 int main(void)
 {
     currentGrid = &gridA;
-    prevGrid = &gridB;
+    nextGrid = &gridB;
 
 
     init_SDL();
@@ -22,14 +22,18 @@ int main(void)
 
     atexit(cleanup);
 
-    while (app.running) {
+    while (1) {
 
         clearSurface();
+        
+        doInput();
+        
+        if (app.running) {
+            doStep(&currentGrid, &nextGrid);
+        }
+        
         drawGrid(currentGrid);
         drawGridLines();
-
-
-        doInput();
 
         updateSurface();
     
