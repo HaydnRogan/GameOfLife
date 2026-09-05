@@ -1,10 +1,14 @@
 #pragma once
 
-#define SCREEN_WIDTH 1000
-#define SCREEN_HEIGHT 1000
-#define CELL_SIZE 10
+#define CELL_SIZE 15
+#define NROWS 50
+#define NCOLS 70
+#define SCREEN_WIDTH NCOLS*CELL_SIZE
+#define SCREEN_HEIGHT NROWS*CELL_SIZE
 #define TARGET_FPS 1000/60
 
 #define COLOUR_GREY 0x303030
 #define COLOUR_WHITE 0xFFFFFF
 #define COLOUR_BLACK 0x0
+
+typedef int Grid[NCOLS][NROWS];

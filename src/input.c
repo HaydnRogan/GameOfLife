@@ -1,6 +1,7 @@
 #include "input.h"
 
 extern App app;
+extern Grid grid;
 void doInput(void)
 {
     SDL_Event event;
@@ -13,10 +14,14 @@ void doInput(void)
                 app.running = 0;
                 break;
 
+            case SDL_MOUSEBUTTONDOWN:
+                grid[event.motion.x/CELL_SIZE][event.motion.y/CELL_SIZE] = !(grid[event.motion.x/CELL_SIZE][event.motion.y/CELL_SIZE]);
+            break;
+
             default:
                 break;
         }
     }
 
-    SDL_GetMouseState(&app.mouse.x, &app.mouse.y);
+    
 }

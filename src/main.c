@@ -2,22 +2,27 @@
 #include "init.h"
 #include "input.h"
 #include "draw.h"
+#include "grid.h"
 
 App app;
+Grid grid;
 
 int main(void)
 {
     init_SDL();
+    initGrid();
 
     atexit(cleanup);
 
     while (app.running) {
 
         clearSurface();
-        drawGrid();
+        drawGrid(grid);
+        drawGridLines();
+
 
         doInput();
-        drawCell(app.mouse.x, app.mouse.y);
+
         updateSurface();
     
         SDL_Delay((int) TARGET_FPS);

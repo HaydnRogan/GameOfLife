@@ -16,7 +16,7 @@ void clearSurface(void)
                  COLOUR_BLACK);
 }
 
-void drawGrid(void)
+void drawGridLines(void)
 {
 
     // Drawing Columns
@@ -29,6 +29,18 @@ void drawGrid(void)
     for (int y = 0; y < SCREEN_HEIGHT; y += CELL_SIZE) {
         SDL_Rect line = {0, y, SCREEN_WIDTH, 1};
         SDL_FillRect(app.surface, &line, COLOUR_GREY);
+    }
+}
+
+void drawGrid(Grid grid)
+{
+    for (int i = 0; i < NCOLS; i++) {
+        for (int j = 0; j < NROWS; j++) {
+            if (grid[i][j] == 1) {
+
+                drawCell(i*CELL_SIZE, j*CELL_SIZE);
+            }
+        }
     }
 }
 
