@@ -1,20 +1,17 @@
 #include "common.h"
-#include "init.h"
-#include "input.h"
 #include "draw.h"
 #include "grid.h"
+#include "init.h"
+#include "input.h"
 
 App app;
 Grid gridA, gridB;
 Grid *nextGrid, *currentGrid;
 
-
-
 int main(void)
 {
     currentGrid = &gridA;
     nextGrid = &gridB;
-
 
     init_SDL();
     initGrid(gridA);
@@ -25,19 +22,23 @@ int main(void)
     while (1) {
 
         clearSurface();
-        
+
         doInput();
-        
+
         if (app.running) {
             doStep(&currentGrid, &nextGrid);
         }
-        
+
         drawGrid(currentGrid);
         drawGridLines();
 
         updateSurface();
-    
-        SDL_Delay((int) TARGET_FPS);
+
+        if (app.running) {
+            SDL_Delay((int)SIMULATION_FPS);
+        } else {
+            SDL_Delay((int)TARGET_FPS);
+        }
     };
 
     return 0;
