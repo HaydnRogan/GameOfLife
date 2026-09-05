@@ -5,19 +5,27 @@
 #include "grid.h"
 
 App app;
-Grid grid;
+Grid gridA, gridB;
+Grid *prevGrid, *currentGrid;
+
+
 
 int main(void)
 {
+    currentGrid = &gridA;
+    prevGrid = &gridB;
+
+
     init_SDL();
-    initGrid();
+    initGrid(gridA);
+    initGrid(gridB);
 
     atexit(cleanup);
 
     while (app.running) {
 
         clearSurface();
-        drawGrid(grid);
+        drawGrid(currentGrid);
         drawGridLines();
 
 

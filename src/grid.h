@@ -1,4 +1,5 @@
 #pragma once
 #include "common.h"
 
-void initGrid(void);
+void initGrid(Grid grid);
+void swapGrid(Grid **currentGrid, Grid **nextGrid);
