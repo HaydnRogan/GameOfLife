@@ -1,6 +1,7 @@
 #include "common.h"
 #include "init.h"
 #include "input.h"
+#include "draw.h"
 
 App app;
 
@@ -12,9 +13,14 @@ int main(void)
 
     while (app.running) {
 
-        
-        doInput();
+        clearSurface();
+        drawGrid();
 
+        doInput();
+        drawCell(app.mouse.x, app.mouse.y);
+        updateSurface();
+    
+        SDL_Delay((int) TARGET_FPS);
     };
 
     return 0;

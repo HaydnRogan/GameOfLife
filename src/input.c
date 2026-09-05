@@ -17,4 +17,6 @@ void doInput(void)
                 break;
         }
     }
+
+    SDL_GetMouseState(&app.mouse.x, &app.mouse.y);
 }
